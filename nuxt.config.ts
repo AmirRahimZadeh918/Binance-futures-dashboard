@@ -2,7 +2,12 @@
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
+  modules: ['@nuxtjs/color-mode'],
+  imports: {
+    dirs: ['constants', 'composables',],
+  },
+  components: true,
   css: ['~/assets/css/main.css'],
   postcss: {
     plugins: {
@@ -10,4 +15,8 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  colorMode: {
+    classSuffix: '',
+  },
+  ssr: false,
 })
