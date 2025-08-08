@@ -16,10 +16,10 @@ const { isDark } = useTheme();
       />
       <SharedBrandLogo />
     </div>
-    <SharedMenus />
+    <Menus />
   </div>
     <div class="flex flex-row">
-      <SharedHeaderThemeSwitcher />
+      <HeaderThemeSwitcher />
     </div>
   </div>
 </template>

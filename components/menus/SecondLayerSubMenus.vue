@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-col surface-color-secondary rounded-md w-56 h-96">
-    <shared-menus-second-layer-sub-menu-items
+    <MenusSecondLayerSubMenuItems
       v-for="item in items"
       :key="item.key"
       :icon="item.icon"

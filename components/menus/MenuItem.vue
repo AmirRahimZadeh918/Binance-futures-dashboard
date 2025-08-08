@@ -37,6 +37,6 @@ const textClass = computed(() =>
       class="transition-colors duration-300"
       :class="[textClass, isHovered ? 'rotate-180' : '']"
     />
-    <SharedMenusFirstLayerSubMenus v-if="isHovered && items" :items="items" />
+    <MenusFirstLayerSubMenus v-if="isHovered && items" :items="items" />
   </div>
 </template>

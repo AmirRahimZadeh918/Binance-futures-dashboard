@@ -17,7 +17,7 @@ const expand = (item) => {
 <template>
   <div class="flex flex-row gap-4 absolute top-16 surface-color-primary rounded-b-md p-4">
     <div class="w-56">
-      <SharedMenusFirstLayerSubMenuItems
+      <MenusFirstLayerSubMenuItems
         v-for="item in items"
         :item="item"
         :key="item.key"
@@ -25,6 +25,6 @@ const expand = (item) => {
         @mouseenter="expand(item)"
       />
     </div>
-    <SharedMenusSecondLayerSubMenus v-if="subItems" :items="subItems" />
+    <MenusSecondLayerSubMenus v-if="subItems" :items="subItems" />
   </div>
 </template>

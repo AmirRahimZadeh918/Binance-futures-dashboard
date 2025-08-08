@@ -2,7 +2,7 @@
   <div
     class="min-h-screen background-color text-color-primary color-transition font-DanaRegular text-sm"
   >
-    <SharedHeader />
+    <Header />
     <slot />
   </div>
 </template>
