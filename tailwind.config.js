@@ -15,8 +15,10 @@ export default {
         brand: "#ebb918",
         "background-light": "#f5f5f5",
         "background-dark": "#000000",
-        "surface-light": "#fafafa",
-        "surface-dark": "#2c3139",
+        "surface-light-primary": "#ffffff",
+        "surface-dark-primary": "#181a20",
+        "surface-light-secondary": "#fafafa",
+        "surface-dark-secondary": "#2c3139",
         "text-light-primary": "#000000",
         "text-dark-primary": "#ffffff",
       },
@@ -83,11 +85,17 @@ export default {
         ".background-color": {
           "@apply bg-background-light dark:bg-background-dark": {},
         },
-        ".surface-color": {
-          "@apply bg-surface-light dark:bg-surface-dark": {},
+        ".surface-color-primary": {
+          "@apply bg-surface-light-primary dark:bg-surface-dark-primary": {},
+        },
+        ".surface-color-secondary": {
+          "@apply bg-surface-light-secondary dark:bg-surface-dark-secondary": {},
         },
         ".text-color-primary": {
           "@apply text-text-light-primary dark:text-text-dark-primary": {},
+        },
+        ".color-transition": {
+          "@apply transition-colors duration-300": {},
         },
       });
     },

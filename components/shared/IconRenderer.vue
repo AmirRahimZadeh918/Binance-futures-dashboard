@@ -31,7 +31,6 @@ if (props.extention === 'svg') {
   }
 } else {
     icon.value = `/_nuxt/assets/icons/${props.name}.${props.extention}`
-    console.log(icon.value)
 }
 </script>
 
