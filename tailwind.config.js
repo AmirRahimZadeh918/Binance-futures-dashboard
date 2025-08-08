@@ -13,6 +13,8 @@ export default {
     extend: {
       colors: {
         brand: "#ebb918",
+        "success": "#47be88",
+        "danger": "#ee4359",
         "background-light": "#f5f5f5",
         "background-dark": "#000000",
         "surface-light-primary": "#ffffff",
