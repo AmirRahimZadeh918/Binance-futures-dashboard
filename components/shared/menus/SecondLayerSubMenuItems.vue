@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <div class="flex flex-row items-center gap-2">
       <shared-icon-renderer
         v-if="icon"
@@ -25,7 +25,7 @@ const props = defineProps({
       </p>
     </div>
     <shared-icon-renderer
-      class="text-brand scale-75 hidden group-hover:block"
+      class="text-brand absolute right-4 scale-75 hidden group-hover:block"
       name="arrow-right"
       extention="svg"
     />

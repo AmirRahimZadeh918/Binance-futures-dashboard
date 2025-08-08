@@ -1,8 +1,8 @@
 <script setup>
 const props = defineProps({
-  title: {
-    type: String,
-    default: "",
+  item: {
+    type: Object,
+    default: {},
   },
   activeItem: {
     type: Boolean,
@@ -16,7 +16,7 @@ const props = defineProps({
     class="relative flex flex-row justify-between items-center w-full rounded-md p-4"
     :class="activeItem ? 'surface-color-secondary' : ''"
   >
-    <p class="text-base font-medium text-color-primary">{{ title }}</p>
-    <SharedIconRenderer name="arrow" extention="svg" class="rotate-[270deg]" />
+    <p class="text-base font-medium text-color-primary">{{ item.title }}</p>
+    <SharedIconRenderer v-if="item.subItems" name="arrow" extention="svg" class="rotate-[270deg]" />
   </div>
 </template>

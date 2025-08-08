@@ -15,13 +15,13 @@ const expand = (item) => {
 </script>
 
 <template>
-  <div class="flex flex-row gap-4 absolute top-16 surface-color-primary p-4">
+  <div class="flex flex-row gap-4 absolute top-16 surface-color-primary rounded-b-md p-4">
     <div class="w-56">
       <SharedMenusFirstLayerSubMenuItems
         v-for="item in items"
+        :item="item"
         :key="item.key"
         :active-item="activeItemId === item.key"
-        :title="item.title"
         @mouseenter="expand(item)"
       />
     </div>
