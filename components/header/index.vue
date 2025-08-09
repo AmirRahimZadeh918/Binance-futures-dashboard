@@ -19,12 +19,12 @@ const { isDark } = useTheme();
     <Menus />
   </div>
     <div class="flex flex-row items-center gap-4">
-      <Profile />
-      <Services />
-      <Orders />
-      <LanguageSettings />
-      <HelpCenter />
-      <Setting />
+      <HeaderProfile />
+      <HeaderServices />
+      <HeaderOrders />
+      <HeaderLanguageSettings />
+      <HeaderHelpCenter />
+      <HeaderSetting />
       <HeaderThemeSwitcher />
     </div>
   </div>
