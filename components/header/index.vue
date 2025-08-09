@@ -20,6 +20,7 @@ const { isDark } = useTheme();
   </div>
     <div class="flex flex-row items-center gap-3">
       <Profile />
+      <LanguageSettings />
       <HelpCenter />
       <Setting />
       <HeaderThemeSwitcher />
