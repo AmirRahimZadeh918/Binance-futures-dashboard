@@ -268,7 +268,23 @@ export const MENUS = [
       {
         key: "learn",
         title: "Learn",
-        subItems: [],
+        subItems: [
+          {
+            key: "get-started",
+            title: "Get Started",
+            icon: null,
+          },
+          {
+            key: "mock-trading",
+            title: "Mock Trading",
+            icon: null,
+          },
+          {
+            key: "responsible-trading",
+            title: "Responsible Trading",
+            icon: null,
+          },
+        ],
       },
       {
         key: "trading-rules",
