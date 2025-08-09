@@ -4,7 +4,7 @@
   <div>
     <SharedIconRenderer
       class="w-7 cursor-pointer text-color-primary hover:text-brand color-transition"
-      name="profile"
+      name="setting"
       extention="svg"
     />
   </div>

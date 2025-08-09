@@ -18,7 +18,9 @@ const { isDark } = useTheme();
     </div>
     <Menus />
   </div>
-    <div class="flex flex-row">
+    <div class="flex flex-row items-center gap-3">
+      <Profile />
+      <Setting />
       <HeaderThemeSwitcher />
     </div>
   </div>
