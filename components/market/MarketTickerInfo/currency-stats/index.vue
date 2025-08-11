@@ -13,7 +13,7 @@ const props = defineProps({
     <div class="flex flex-row items-center justify-between gap-2 w-full">
       <SharedLivePrice
         :data="props.data?.priceChangeDollor"
-        :highlight-change="true"
+        :highlight-sign="true"
         class="text-xs font-medium"
       />
       <SharedLivePercent

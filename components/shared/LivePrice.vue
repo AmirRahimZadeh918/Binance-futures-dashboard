@@ -1,6 +1,4 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
-
 const props = defineProps({
   data: {
     type: String,
@@ -8,6 +6,10 @@ const props = defineProps({
     required: true
   },
   highlightChange: {
+    type: Boolean,
+    default: false
+  },
+  highlightSign: {
     type: Boolean,
     default: false
   }
@@ -25,6 +27,8 @@ watch(
       trend.value = 'up'
     } else if (numericValue < prevValue.value) {
       trend.value = 'down'
+    } else {
+      trend.value = null
     }
     prevValue.value = numericValue
   },
@@ -39,18 +43,25 @@ const formattedData = computed(() => {
 })
 
 const textClass = computed(() => {
-  if (!props.highlightChange) return ''
-
   const numericValue = Number(props.data)
 
-  if (numericValue < 0) return 'text-danger'
+  if (!props.highlightChange && !props.highlightSign) return ''
 
-  return trend.value === 'up'
-    ? 'text-success'
-    : trend.value === 'down'
-    ? 'text-danger'
-    : ''
+  if (props.highlightSign) {
+    if (numericValue > 0) return 'text-success'
+    if (numericValue < 0) return 'text-danger'
+    return ''
+  }
+
+  if (props.highlightChange) {
+    if (trend.value === 'up') return 'text-success'
+    if (trend.value === 'down') return 'text-danger'
+    return ''
+  }
+
+  return ''
 })
+
 </script>
 
 <template>

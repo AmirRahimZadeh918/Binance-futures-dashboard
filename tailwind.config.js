@@ -11,6 +11,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        binance: ['"Binance PLEX"', 'sans-serif'],
+      },
       colors: {
         brand: "#ebb918",
         "success": "#47be88",
