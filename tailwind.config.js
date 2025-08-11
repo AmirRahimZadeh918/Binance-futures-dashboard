@@ -23,6 +23,8 @@ export default {
         "surface-dark-secondary": "#2c3139",
         "text-light-primary": "#000000",
         "text-dark-primary": "#ffffff",
+        "text-light-secondary": "#8f96a3",
+        "text-dark-secondary": "#7c8492",
       },
       padding: {
         xs: "1rem",
@@ -95,6 +97,15 @@ export default {
         },
         ".text-color-primary": {
           "@apply text-text-light-primary dark:text-text-dark-primary": {},
+        },
+        ".text-color-secondary": {
+          "@apply text-text-light-secondary dark:text-text-dark-secondary": {},
+        },
+        ".border-color-primary": {
+          "@apply border-surface-light-primary dark:border-surface-dark-primary": {},
+        },
+        ".border-color-secondary": {
+          "@apply border-surface-light-secondary dark:border-surface-dark-secondary": {},
         },
         ".color-transition": {
           "@apply transition-colors duration-300": {},
