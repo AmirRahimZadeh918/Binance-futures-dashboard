@@ -1,10 +1,12 @@
 <script setup></script>
 
 <template>
-  <main class="grid grid-cols-12 h-[1500px]">
-    <div class="grid grid-cols-1 col-span-10 h-full">
+  <main class="grid grid-cols-12 gap-1 pt-1">
+    <div class="grid grid-cols-1 gap-1 col-span-10 h-full">
       <section class="bg-red-600/0 grid grid-cols-10">
         <div class="bg-white/0 col-span-8">
+          <MarketMarketTickerInfo />
+          <!-- favorites -->
           <!-- chart -->
         </div>
         <div class="bg-blue-300/0 col-span-2">

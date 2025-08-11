@@ -1,16 +1,25 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  data: {
+    type: Object,
+    default: {},
+  }
+})
+</script>
 
 <template>
-  <div class="flex flex-col justify-center items-center">
-    <SharedLivePrice data="118556" class="text-xl text-success font-medium" />
-    <div class="flex flex-row items-center justify-between w-full">
+  <div class="flex flex-col justify-start items-start">
+    <SharedLivePrice :data="props.data?.lastPrice" :highlight-change="true" class="text-xl font-medium" />
+    <div class="flex flex-row items-center justify-between gap-2 w-full">
       <SharedLivePrice
-        data="1500.56"
-        class="text-xs text-success font-medium"
+        :data="props.data?.priceChangeDollor"
+        :highlight-change="true"
+        class="text-xs font-medium"
       />
       <SharedLivePercent
-        data="12"
-        class="text-xs text-success font-medium"
+        :data="props.data?.priceChangePercent"
+        :highlight-change="true"
+        class="text-xs font-medium"
       />
     </div>
   </div>
