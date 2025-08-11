@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@nuxtjs/color-mode'],
   imports: {
-    dirs: ['constants', 'composables', 'composables/logic'],
+    dirs: ['constants', 'composables', 'composables/logic', 'composables/services/marketData'],
   },
   components: true,
   css: ['~/assets/css/main.css'],
