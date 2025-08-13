@@ -1,4 +1,5 @@
-import { ref, onMounted, onBeforeUnmount } from "vue";
+import { ref, watch, onMounted, onBeforeUnmount } from "vue";
+import { useSymbol } from "@/composables/logic/useSymbol";
 
 export interface useMarketDataSocket {
   lastPrice: string;
@@ -7,15 +8,16 @@ export interface useMarketDataSocket {
   highPrice: string;
   lowPrice: string;
   volume: string;
-  volumeUSDT: string,
+  volumeUSDT: string;
   openPrice: string;
   symbol: string;
-  openInterestUSDT: string,
+  openInterestUSDT: string;
   priceChangePercent: string;
   priceChangeDollor: string;
 }
 
-export const useMarketDataSocket = (symbol: string) => {
+export const useMarketDataSocket = () => {
+  const { currentSymbol } = useSymbol();
   const stats = ref<useMarketDataSocket | null>(null);
   let ws: WebSocket | null = null;
 
@@ -35,14 +37,15 @@ export const useMarketDataSocket = (symbol: string) => {
   });
 
   const connect = () => {
-    ws = new WebSocket(
-      `wss://fstream.binance.com/ws/${symbol.toLowerCase()}@ticker`
-    );
+    ws = new WebSocket(`wss://fstream.binance.com/ws/!ticker@arr`);
 
     ws.onmessage = (event) => {
       try {
         const rawData = JSON.parse(event.data);
-        stats.value = mapWsDataToStandard(rawData);
+        const ticker = rawData.find((t: any) => t.s === currentSymbol.value);
+        if (ticker) {
+          stats.value = mapWsDataToStandard(ticker);
+        }
       } catch (error) {
         console.error("WebSocket data parse error:", error);
       }
@@ -54,6 +57,10 @@ export const useMarketDataSocket = (symbol: string) => {
   };
 
   onMounted(() => connect());
+
+  watch(currentSymbol, () => {
+    stats.value = null;
+  });
 
   onBeforeUnmount(() => {
     if (ws) {
