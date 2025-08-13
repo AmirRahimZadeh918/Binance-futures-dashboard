@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <p
-    class="text-base"
+    class="text-base color-transition"
     :class="[
       variant === 'primary' ? 'text-color-primary' : 'text-color-secondary',
     ]"

@@ -65,7 +65,7 @@ const textClass = computed(() => {
 </script>
 
 <template>
-  <span :class="textClass">
+  <span :class="textClass" class="color-transition">
     {{ formattedData }}
   </span>
 </template>

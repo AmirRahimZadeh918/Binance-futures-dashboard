@@ -1,5 +1,5 @@
 <template>
-  <div id="tradingview" style="height: 500px"></div>
+  <div id="tradingview" style="height: 100%"></div>
 </template>
 
 <script setup>

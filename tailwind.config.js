@@ -113,6 +113,12 @@ export default {
         ".color-transition": {
           "@apply transition-colors duration-300": {},
         },
+        ".opacity-transition": {
+          "@apply transition-opacity duration-300": {},
+        },
+        ".full-screen": {
+          "@apply fixed top-0 bottom-0 left-0 right-0 z-overlay": {},
+        },
       });
     },
   ],

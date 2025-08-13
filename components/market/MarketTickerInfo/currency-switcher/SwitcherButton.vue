@@ -8,7 +8,7 @@
         <div class="flex flex-row items-center gap-2 cursor-pointer">
             <SharedAssetIcon name="btc" />
             <SharedBaseText text="BTCUSDT" class="text-xl font-medium" />
-            <span class="surface-color-secondary px-2 rounded-sm -ml-1">
+            <span class="surface-color-secondary color-transition px-2 rounded-sm -ml-1">
                 <SharedBaseText text="Prep" class="text-xs" />
             </span>
             <SharedIconRenderer name="arrow-down" extention="svg" class="text-color-secondary w-5" />

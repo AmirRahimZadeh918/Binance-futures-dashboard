@@ -3,7 +3,7 @@ const menus = MENUS;
 </script>
 
 <template>
-  <div class="flex flex-row items-center gap-5">
+  <div class="flex flex-row items-center gap-5 z-100">
     <MenusMenuItem
       v-for="menu in menus"
       :title="menu.title"
