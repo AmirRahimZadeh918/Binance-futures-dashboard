@@ -41,8 +41,6 @@ const fullScreenChart = ref(false);
     </div>
     <MarketChartTradingViewChart
       v-if="activeTab === tabs[0].key"
-      symbol="BTCUSDT"
-      interval="1h"
     />
   </div>
 </template>

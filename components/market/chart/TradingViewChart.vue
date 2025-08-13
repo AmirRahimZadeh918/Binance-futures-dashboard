@@ -4,6 +4,7 @@
 
 <script setup>
 const { isDark } = useTheme();
+const { currentSymbol } = useSymbol();
 
 const initWidget = () => {
   if (!window.TradingView) return;
@@ -13,7 +14,7 @@ const initWidget = () => {
 
   new window.TradingView.widget({
     container_id: "tradingview",
-    symbol: "BINANCE:BTCUSDT",
+    symbol: `BINANCE:${currentSymbol.value}`,
     interval: "60",
     theme: isDark.value ? THEMES.DARKMODE : THEMES.LIGHTMODE,
     style: "1",
@@ -37,7 +38,12 @@ onMounted(() => {
   loadScript(initWidget);
 });
 
-watch(isDark, () => {
-  initWidget();
+watch(currentSymbol, (newSymbol, oldSymbol) => {
+  if (newSymbol !== oldSymbol) initWidget();
 });
+
+watch(isDark, (newVal, oldVal) => {
+  if (newVal !== oldVal) initWidget();
+});
+
 </script>
