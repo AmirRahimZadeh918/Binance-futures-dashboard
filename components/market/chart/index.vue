@@ -24,7 +24,7 @@ const fullScreenChart = ref(false);
     :class="fullScreenChart ? 'full-screen' : 'h-[550px]'"
   >
     <div
-      class="flex justify-between items-center w-full border-b border-color-secondary px-2"
+      class="flex justify-between items-center w-full border-b border-color-secondary px-2 pt-2"
     >
       <SharedTabs :items="tabs" v-model="activeTab" />
       <div class="flex flex-row">
