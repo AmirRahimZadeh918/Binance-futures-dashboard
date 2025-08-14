@@ -1,5 +1,5 @@
 <script setup>
-
+const { currentSymbol } = useSymbol();
 </script>
 
 <template>
@@ -7,7 +7,7 @@
         <SharedFavoriteToggle />
         <div class="flex flex-row items-center gap-2 cursor-pointer">
             <SharedAssetIcon name="btc" />
-            <SharedBaseText text="BTCUSDT" class="text-xl font-medium" />
+            <SharedBaseText :text="currentSymbol" class="text-xl font-medium" />
             <span class="surface-color-secondary color-transition px-2 rounded-sm -ml-1">
                 <SharedBaseText text="Prep" class="text-xs" />
             </span>

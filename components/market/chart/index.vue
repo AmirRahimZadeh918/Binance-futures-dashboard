@@ -21,9 +21,7 @@ const fullScreenChart = ref(false);
 <template>
   <div
     class="w-full surface-color-primary color-transition flex flex-col justify-start rounded-sm"
-    :class="
-      fullScreenChart ? 'full-screen' : 'h-[550px]'
-    "
+    :class="fullScreenChart ? 'full-screen' : 'h-[550px]'"
   >
     <div
       class="flex justify-between items-center w-full border-b border-color-secondary px-2"
@@ -39,8 +37,8 @@ const fullScreenChart = ref(false);
         />
       </div>
     </div>
-    <MarketChartTradingViewChart
-      v-if="activeTab === tabs[0].key"
-    />
+    <MarketChartTheChart v-if="activeTab === tabs[0].key" />
+    <MarketChartInfo v-if="activeTab === tabs[1].key" />
+    <MarketChartTradingData v-if="activeTab === tabs[2].key" />
   </div>
 </template>
