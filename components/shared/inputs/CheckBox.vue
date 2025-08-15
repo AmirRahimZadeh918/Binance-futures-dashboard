@@ -46,7 +46,7 @@ const clickCheckboxHandler = (event) => {
         :class="[ 
           'border-[1px] border-black dark:border-white rounded-sm', 
           props.size, 
-          props.modelValue ? 'bg-black dark:bg-white' : 'surface-color-secondary'
+          props.modelValue ? 'bg-black dark:bg-white' : 'surface-color-primary'
         ]"
       >
         <div
