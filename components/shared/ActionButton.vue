@@ -1,39 +1,48 @@
-<script setup>
+<script setup lang="ts">
+type AsType = "button" | "link";
+type VariantType = "primary" | "secondary" | "danger" | "success" | "custom";
+
 const props = defineProps({
-  as: {
-    type: String,
-    default: "button", // "link" or "button"
-  },
-  href: {
-    type: String,
-    default: null, // use when as=link
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-  active: {
-    type: Boolean,
-    default: false,
-  },
+  as: { type: String as PropType<AsType>, default: "button" },
+  href: { type: String, default: null },
+  disabled: { type: Boolean, default: false },
+  active: { type: Boolean, default: false },
+  useDefaultStyles: { type: Boolean, default: true },
+  variant: { type: String as PropType<VariantType>, default: "primary" },
 });
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits<{
+  (e: "click"): void;
+}>();
+
+const variantClasses: Record<VariantType, string> = {
+  primary: "text-color-primary surface-color-secondary",
+  secondary:
+    "text-color-secondary hover:text-color-primary hover:surface-color-secondary",
+  danger: "text-white bg-red-600",
+  success: "text-white bg-green-600",
+  custom: "",
+};
+
+const classes = computed(() => {
+  if (!props.useDefaultStyles) return "";
+  return [
+    "px-2 py-1 text-xs rounded-sm font-normal tracking-wide color-transition",
+    props.active
+      ? variantClasses[props.variant || "primary"]
+      : variantClasses[props.variant || "secondary"],
+    props.disabled && "opacity-50 cursor-not-allowed",
+  ];
+});
 </script>
 
 <template>
   <component
-    :is="as"
-    :href="as === 'link' ? href : null"
-    :disabled="as === 'button' ? disabled : null"
-    @click="$emit('click')"
-    class="px-2 py-1 text-xs rounded-md font-normal tracking-wide color-transition"
-    :class="[
-      active 
-        ? 'text-color-primary surface-color-secondary' 
-        : 'text-color-secondary hover:text-color-primary hover:surface-color-secondary',
-      disabled && 'opacity-50 cursor-not-allowed'
-    ]"
+    :is="props.as || 'button'"
+    :href="props.as === 'link' ? props.href : null"
+    :disabled="props.as === 'button' ? props.disabled : null"
+    @click="!props.disabled && emit('click')"
+    :class="classes"
   >
     <slot />
   </component>
