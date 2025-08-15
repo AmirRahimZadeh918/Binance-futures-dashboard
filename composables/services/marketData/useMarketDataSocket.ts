@@ -1,6 +1,5 @@
 import { ref, watch, onMounted, onBeforeUnmount } from "vue";
 import { useSymbol } from "@/composables/logic/useSymbol";
-
 export interface useMarketDataSocket {
   lastPrice: string;
   index: string;
@@ -17,6 +16,7 @@ export interface useMarketDataSocket {
 }
 
 export const useMarketDataSocket = () => {
+  const store = useLivePriceStore();
   const { currentSymbol } = useSymbol();
   const stats = ref<useMarketDataSocket | null>(null);
   let ws: WebSocket | null = null;
@@ -45,6 +45,7 @@ export const useMarketDataSocket = () => {
         const ticker = rawData.find((t: any) => t.s === currentSymbol.value);
         if (ticker) {
           stats.value = mapWsDataToStandard(ticker);
+          store.setLastPrice(stats.value.lastPrice);
         }
       } catch (error) {
         console.error("WebSocket data parse error:", error);

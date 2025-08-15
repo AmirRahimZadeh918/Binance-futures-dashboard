@@ -12,7 +12,7 @@
           <MarketChart />
         </div>
         <div class="bg-blue-300/0 col-span-2">
-          <!-- order Book -->
+          <MarketOrderBook />
         </div>
       </section>
       <section class="bg-red-700/0 w-full h-96">

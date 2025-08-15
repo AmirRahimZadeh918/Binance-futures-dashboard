@@ -38,10 +38,10 @@ if (props.extention === 'svg') {
   <span
     v-if="props.extention === 'svg'"
     :aria-label="name"
-    :class="{ 'nuxt-icon--fill': !filled }"
     class="nuxt-icon flex shrink-0 items-center justify-center"
     v-html="icon"
   />
+  <!-- :class="{ 'nuxt-icon--fill': !filled }" -->
   <img v-else :src="icon" :key="icon" alt="" />
 </template>
 

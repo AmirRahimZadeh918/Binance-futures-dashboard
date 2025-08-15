@@ -9,7 +9,7 @@ const props = defineProps({
 
 <template>
   <div class="flex flex-col justify-start items-start">
-    <SharedLivePrice :data="props.data?.lastPrice" :highlight-change="true" class="text-xl font-medium" />
+    <SharedLivePrice :data="props.data?.lastPrice" :color-transition="false" :highlight-change="true" class="text-xl font-medium" />
     <div class="flex flex-row items-center justify-between gap-2 w-full">
       <SharedLivePrice
         :data="props.data?.priceChangeDollor"
