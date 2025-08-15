@@ -5,11 +5,19 @@ const props = defineProps({
     default: () => ({}),
     required: true,
   },
+  mode: {
+    type: String,
+    default: MARKET_DEPTH_TYPE.BOTH,
+  },
 });
 const store = useLivePriceStore();
-import { useOrderBookSocket } from '@/composables/services/marketData/useOrderBookSocket'
+import { useOrderBookSocket } from "@/composables/services/marketData/useOrderBookSocket";
 
-const { bids, asks } = useOrderBookSocket(10)
+const { bids, asks } = useOrderBookSocket(
+  props.mode === MARKET_DEPTH_TYPE.BOTH
+    ? MARKET_DEPTH_LEVELS.MID
+    : MARKET_DEPTH_LEVELS.HIGH
+);
 </script>
 
 <template>
@@ -29,26 +37,32 @@ const { bids, asks } = useOrderBookSocket(10)
       />
     </div>
     <div class="flex flex-col justify-between h-full">
-      <div class="flex flex-col">
-        <MarketOrderBookOrdersListBids v-if="bids" :data="bids" />
+      <div
+        v-if="mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.BID"
+        class="flex flex-col"
+      >
+        <MarketOrderBookOrdersListBids v-if="bids?.length" :data="bids" />
       </div>
 
       <div class="flex justify-start items-center gap-4">
         <SharedLivePrice
           class="text-xl"
-          :data="store.lastPrice"
+          :data="store?.lastPrice"
           :color-transition="false"
           :highlight-change="true"
           :highlight-arrow="true"
         />
         <SharedLivePrice
           class="text-sm text-color-secondary"
-          :data="store.lastPrice"
+          :data="store?.lastPrice"
         />
       </div>
 
-      <div class="flex flex-col">
-        <MarketOrderBookOrdersListAsks v-if="asks" :data="asks" />
+      <div
+        v-if="mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.ASK"
+        class="flex flex-col"
+      >
+        <MarketOrderBookOrdersListAsks v-if="asks?.length" :data="asks" />
       </div>
     </div>
   </div>

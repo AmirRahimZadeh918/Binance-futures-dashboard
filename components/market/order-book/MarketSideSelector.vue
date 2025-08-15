@@ -1,13 +1,15 @@
 <script setup>
+const emits = defineEmits(['update:activeTab'])
 const items = ref([
-  { key: "bid&Ask", icon: "bid&Ask" },
-  { key: "ask", icon: "ask" },
-  { key: "bid", icon: "bid" },
+  { key: MARKET_DEPTH_TYPE.BOTH, icon: MARKET_DEPTH_TYPE.BOTH },
+  { key: MARKET_DEPTH_TYPE.ASK, icon: MARKET_DEPTH_TYPE.ASK },
+  { key: MARKET_DEPTH_TYPE.BID, icon: MARKET_DEPTH_TYPE.BID },
 ]);
 
-const activeTab = ref("bid&Ask");
+const activeTab = ref(MARKET_DEPTH_TYPE.BOTH);
 const activateTab = (key) => {
   activeTab.value = key;
+  emits('update:activeTab', activeTab.value);
 };
 </script>
 
