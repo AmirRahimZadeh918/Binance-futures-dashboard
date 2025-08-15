@@ -7,7 +7,6 @@ const fetchOrderBook = async () => {
   try {
     const { data } = await getOrderBook(currentSymbol.value, 1000);
     orderBookData.value = data;
-    console.log(orderBookData.value);
   } catch (err) {
     console.error(err);
   }
@@ -29,7 +28,7 @@ watch(currentSymbol, (newSymbol, oldSymbol) => {
     <MarketOrderBookHeader />
     <div class="flex flex-col gap-3 p-4 h-full">
       <MarketOrderBookMarketSideSelector />
-      <MarketOrderBookOrdersList :data="orderBookData" />
+      <MarketOrderBookOrdersList />
     </div>
   </div>
 </template>

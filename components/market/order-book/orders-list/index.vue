@@ -7,10 +7,13 @@ const props = defineProps({
   },
 });
 const store = useLivePriceStore();
+import { useOrderBookSocket } from '@/composables/services/marketData/useOrderBookSocket'
+
+const { bids, asks } = useOrderBookSocket(10)
 </script>
 
 <template>
-  <div class="flex flex-col gap-0 h-full">
+  <div class="flex flex-col gap-2 h-full">
     <div class="grid grid-cols-4">
       <SharedBaseText
         text="Price (USDT)"
@@ -27,10 +30,10 @@ const store = useLivePriceStore();
     </div>
     <div class="flex flex-col justify-between h-full">
       <div class="flex flex-col">
-        <MarketOrderBookOrdersListBids v-if="data" :data="data.bids" />
+        <MarketOrderBookOrdersListBids v-if="bids" :data="bids" />
       </div>
 
-      <div class="flex justify-start items-center">
+      <div class="flex justify-start items-center gap-4">
         <SharedLivePrice
           class="text-xl"
           :data="store.lastPrice"
@@ -38,10 +41,14 @@ const store = useLivePriceStore();
           :highlight-change="true"
           :highlight-arrow="true"
         />
+        <SharedLivePrice
+          class="text-sm text-color-secondary"
+          :data="store.lastPrice"
+        />
       </div>
 
       <div class="flex flex-col">
-        <MarketOrderBookOrdersListAsks v-if="data" :data="data.asks" />
+        <MarketOrderBookOrdersListAsks v-if="asks" :data="asks" />
       </div>
     </div>
   </div>

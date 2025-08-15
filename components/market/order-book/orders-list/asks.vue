@@ -16,9 +16,9 @@ const calculateSum = (index) => {
 
 <template>
   <div
-    v-for="(item, index) in data.slice(0, 11)"
+    v-for="(item, index) in data"
     :key="index"
-    class="grid grid-cols-4 bg-success/20 hover:bg-success/10 cursor-pointer py-0.5"
+    class="grid grid-cols-4 bg-success/20 hover:bg-success/10 cursor-pointer py-[2.5px]"
   >
     <SharedLivePrice
       :data="item[0]"
