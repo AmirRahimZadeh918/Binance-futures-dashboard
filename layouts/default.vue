@@ -4,5 +4,6 @@
   >
     <Header />
     <slot />
+    <SharedInfiniteCarousel class="fixed bottom-0" />
   </div>
 </template>

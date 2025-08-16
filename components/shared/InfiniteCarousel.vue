@@ -52,6 +52,6 @@ const currencies = [
 }
 
 .animate-marquee {
-  animation: marquee 50s linear infinite;
+  animation: marquee 150s linear infinite;
 }
 </style>

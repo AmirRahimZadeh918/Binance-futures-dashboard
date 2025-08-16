@@ -36,34 +36,50 @@ const { bids, asks } = useOrderBookSocket(
         class="text-color-secondary font-semibold font-italic text-xs col-span-1 tracking-wider text-right"
       />
     </div>
-    <div class="flex flex-col justify-between h-full">
-      <div
-        v-if="mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.BID"
-        class="flex flex-col"
-      >
-        <MarketOrderBookOrdersListBids v-if="bids?.length" :data="bids" />
-      </div>
 
-      <div class="flex justify-start items-center gap-4">
-        <SharedLivePrice
-          class="text-xl"
-          :data="store?.lastPrice"
-          :color-transition="false"
-          :highlight-change="true"
-          :highlight-arrow="true"
-        />
-        <SharedLivePrice
-          class="text-sm text-color-secondary"
-          :data="store?.lastPrice"
-        />
-      </div>
-
+    <section class="h-full">
       <div
-        v-if="mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.ASK"
-        class="flex flex-col"
+        v-if="!bids?.length || !asks?.length"
+        class="flex justify-center items-center w-full h-full"
       >
-        <MarketOrderBookOrdersListAsks v-if="asks?.length" :data="asks" />
+        <SharedLoader />
       </div>
-    </div>
+      <div v-else class="flex flex-col justify-between h-full">
+        <div
+          v-if="
+            mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.BID
+          "
+          class="flex flex-col"
+        >
+          <MarketOrderBookOrdersListBids v-if="bids?.length" :data="bids" />
+        </div>
+
+        <div
+          v-if="bids?.length || asks?.length"
+          class="flex justify-start items-center gap-4"
+        >
+          <SharedLivePrice
+            class="text-xl"
+            :data="store?.lastPrice"
+            :color-transition="false"
+            :highlight-change="true"
+            :highlight-arrow="true"
+          />
+          <SharedLivePrice
+            class="text-sm text-color-secondary"
+            :data="store?.lastPrice"
+          />
+        </div>
+
+        <div
+          v-if="
+            mode === MARKET_DEPTH_TYPE.BOTH || mode === MARKET_DEPTH_TYPE.ASK
+          "
+          class="flex flex-col"
+        >
+          <MarketOrderBookOrdersListAsks v-if="asks?.length" :data="asks" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>

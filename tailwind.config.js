@@ -111,7 +111,7 @@ export default {
           "@apply border-surface-light-secondary dark:border-surface-dark-secondary": {},
         },
         ".color-transition": {
-          "@apply transition-colors duration-300": {},
+          "@apply duration-0": {},
         },
         ".opacity-transition": {
           "@apply transition-opacity duration-300": {},

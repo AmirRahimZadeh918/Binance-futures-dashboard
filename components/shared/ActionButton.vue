@@ -16,7 +16,7 @@ const emit = defineEmits<{
 }>();
 
 const variantClasses: Record<VariantType, string> = {
-  primary: "text-color-primary surface-color-secondary",
+  primary: "text-color-primary surface-color-secondary hover:opacity-90",
   secondary:
     "text-color-secondary hover:text-color-primary hover:surface-color-secondary",
   danger: "text-white bg-red-600",

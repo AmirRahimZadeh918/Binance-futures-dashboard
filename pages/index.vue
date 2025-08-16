@@ -1,26 +1,26 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
-  <main class="grid grid-cols-12 gap-1 pt-1">
-    <div class="grid grid-cols-1 gap-1 col-span-10 h-full">
-      <section class="bg-red-600/0 grid grid-cols-10 gap-1">
-        <div class="bg-white/0 col-span-8 flex flex-col gap-1">
-          <MarketMarketTickerInfo />
-          <!-- favorites -->
-          <MarketChart />
+  <main class="flex flex-col gap-1">
+    <section class="grid grid-cols-12 gap-1 pt-1">
+      <div class="grid grid-cols-1 gap-1 col-span-10 h-full">
+        <div class="grid grid-cols-10 gap-1">
+          <div class="col-span-8 flex flex-col gap-1">
+            <MarketMarketTickerInfo />
+            <!-- favorites -->
+            <MarketChart />
+          </div>
+          <div class="col-span-2">
+            <MarketOrderBook />
+          </div>
         </div>
-        <div class="bg-blue-300/0 col-span-2">
-          <MarketOrderBook />
-        </div>
-      </section>
-      <section class="bg-red-700/0 w-full h-96">
-        <!-- order place -->
-      </section>
-    </div>
-    <section class="bg-red-400/0 col-span-2">
-      <!-- order wizard -->
+      </div>
+      <div class="flex flex-col col-span-2">
+        <MarketOrderActionsPanel />
+      </div>
+    </section>
+    <section class="grid grid-cols-12 surface-color-primary gap-1 h-96 color-transition">
+
     </section>
   </main>
 </template>
