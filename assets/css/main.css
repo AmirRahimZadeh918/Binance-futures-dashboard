@@ -7,3 +7,13 @@
 body {
   font-family: 'Binance PLEX', sans-serif;
 }
+
+@layer components {
+  .input {
+    @apply surface-color-primary text-left h-10 w-full rounded-md border border-color-secondary px-2 py-1 text-base text-color-primary placeholder:text-right placeholder:text-sm placeholder:font-normal placeholder:text-color-secondary focus:outline-none disabled:opacity-50;
+  }
+
+  .label {
+    @apply text-sm font-light text-color-secondary;
+  }
+}
