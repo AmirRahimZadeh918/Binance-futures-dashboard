@@ -22,6 +22,7 @@ const calculateSum = (index) => {
   >
     <SharedLivePrice
       :data="item[0]"
+      :decimal="1"
       class="text-danger font-italic text-xs col-span-2 tracking-wider"
     />
 

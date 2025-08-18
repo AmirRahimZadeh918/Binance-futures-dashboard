@@ -21,6 +21,10 @@ const props = defineProps({
     type: Boolean,
     default: true,
   },
+  decimal: {
+    type: Number,
+    default: 2,
+  },
 });
 
 const prevValue = ref(Number(props.data));
@@ -45,8 +49,8 @@ watch(
 
 const formattedData = computed(() => {
   return new Intl.NumberFormat("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
+    minimumFractionDigits: props.decimal,
+    maximumFractionDigits: props.decimal,
   }).format(Number(props.data));
 });
 
