@@ -1,12 +1,17 @@
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
-  modules: ['@nuxtjs/color-mode', '@pinia/nuxt'],
+  modules: ["@nuxtjs/color-mode", "@pinia/nuxt"],
   imports: {
-    dirs: ['constants', 'composables', 'composables/logic', 'composables/services/marketData'],
+    dirs: [
+      "constants",
+      "composables",
+      "composables/logic",
+      "composables/services/marketData",
+    ],
   },
   components: true,
-  css: ['~/assets/css/main.css'],
+  css: ["~/assets/css/main.css", "~/assets/css/transitions.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -14,7 +19,7 @@ export default defineNuxtConfig({
     },
   },
   colorMode: {
-    classSuffix: '',
+    classSuffix: "",
   },
   ssr: false,
-})
+});
