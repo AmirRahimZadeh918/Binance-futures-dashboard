@@ -47,8 +47,8 @@ const onMouseLeave = () => { isPaused = false }
       <template v-for="item in [...tickers, ...tickers]" :key="item.symbol">
         <div class="flex items-center gap-1 px-4 py-1 cursor-pointer">
           <shared-base-text :text="item.symbol" class="font-thin text-color-primary text-xs hover:opacity-60" />
-          <shared-live-price :data="item.lastPrice" :highlight-sign="true" class="text-[12px]" />
-          <shared-live-percent :data="item.changePercent" class="text-[12px] text-color-secondary" />
+          <shared-live-percent :data="item.changePercent" :highlight-change="true" class="text-[12px]" />
+          <shared-live-price :data="item.lastPrice" :decimal="4" class="text-[12px] text-color-secondary" />
         </div>
       </template>
     </div>
