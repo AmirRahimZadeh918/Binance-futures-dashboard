@@ -1,8 +1,19 @@
-<script setup>
-const activeTab = ref("limit");
+<script setup lang="ts">
+const props = defineProps({
+  modelValue: {
+    type: String,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["update:modelValue"]);
+
+const activeTab = ref(props.modelValue);
+
+watch(activeTab, (val) => emit("update:modelValue", val));
+watch(() => props.modelValue, (val) => (activeTab.value = val));
 
 const tabs = FUTURES_ORDER_TYPES;
-
 const mainTabs = tabs.slice(0, 3);
 const extraTabs = tabs.slice(2);
 
@@ -13,17 +24,12 @@ const selectedExtraTab = computed(() => {
 });
 
 const mainTabsForRender = computed(() => {
-  return [
-    mainTabs[0],
-    mainTabs[1],
-    selectedExtraTab.value || mainTabs[2],
-  ];
+  return [mainTabs[0], mainTabs[1], selectedExtraTab.value || mainTabs[2]];
 });
 </script>
 
 <template>
   <div class="flex flex-row items-center gap-2 border-b border-color-secondary">
-    
     <SharedTabs :items="mainTabsForRender" v-model="activeTab" />
 
     <div

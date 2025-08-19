@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="flex flex-row justify-between items-center p-4">
+  <div class="flex flex-row justify-between items-center">
     <div class="flex flex-row items-center gap-2">
       <SharedActionButton variant="primary" class="w-20">
         Cross

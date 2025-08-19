@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <main class="flex flex-col gap-1">
+  <main class="flex flex-col gap-1 overflow-x-hidden">
     <section class="grid grid-cols-12 gap-1 pt-1">
       <div class="grid grid-cols-1 gap-1 col-span-10 h-full">
         <div class="grid grid-cols-10 gap-1">

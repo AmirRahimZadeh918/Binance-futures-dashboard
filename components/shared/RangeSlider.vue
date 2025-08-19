@@ -1,15 +1,29 @@
 <script setup lang="ts">
-const value = ref(0);
-const max = 100;
-const steps = [0, 25, 50, 75, 100];
+const props = defineProps({
+  modelValue: { type: Number, default: 0 },
+  max: { type: Number, default: 100 },
+  steps: { type: Array as () => number[], default: () => [0, 25, 50, 75, 100] },
+});
 
-const formattedValue = (val: number) => (val / 100).toFixed(3);
+const emit = defineEmits(["update:modelValue"]);
 
+const value = ref(props.modelValue);
 const showToolTip = ref(false);
+
+watch(value, (val) => {
+  emit("update:modelValue", val);
+});
+
+watch(
+  () => props.modelValue,
+  (val) => {
+    value.value = val;
+  }
+);
 </script>
 
 <template>
-  <div class="w-full flex flex-col gap-2">
+  <div class="w-full flex flex-col gap-2 px-1">
     <div class="relative w-full">
       <div class="h-0.5 surface-color-secondary rounded-full relative">
         <div
@@ -36,7 +50,7 @@ const showToolTip = ref(false);
           @mouseleave="showToolTip = false"
           type="range"
           min="0"
-          :max="max"
+          :max="props.max"
           step="1"
           v-model="value"
           class="range-slider absolute -top-[7px] w-full h-3 cursor-pointer bg-transparent"
@@ -47,22 +61,12 @@ const showToolTip = ref(false);
           :text="value"
           class="absolute -top-7"
           :style="{
-            left: `${(value / max) * 100}%`,
-            transform: 'translateX(-5%)',
+            left: `${(value / props.max) * 100}%`,
+            transform: 'translateX(-3%)',
           }"
         />
       </div>
     </div>
-
-    <!-- Labels -->
-    <!-- <div class="flex justify-between text-sm text-gray-300">
-      <span
-        >Buy <b>{{ formattedValue(value) }} BTC</b></span
-      >
-      <span
-        >Sell <b>{{ formattedValue(max - value) }} BTC</b></span
-      >
-    </div> -->
   </div>
 </template>
 
